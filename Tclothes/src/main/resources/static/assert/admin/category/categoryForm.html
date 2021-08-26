@@ -1,0 +1,29 @@
+<section class="row">
+    <div class="col offset ">
+        
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-shopping-basket"></i> Add New Categories</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="categoryId">Category ID:</label>
+                        <!-- <input type="hidden"/> -->
+                        <input ng-model="form.categoryId"  Class="form-control"/>
+                        <!-- <small style="color: red"><form:errors path="categoryId"></form:errors></small> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input ng-model="form.name"  Class="form-control"/>
+                        <small style="color: red" ng-bind="error.name"></small>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <button ng-click="create()" class="btn btn-primary"><i class="fas fa-save"></i>Save</button> &nbsp;
+                    <button type="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Reset</button> &nbsp;
+                    <a href="#!listCategory" class="btn btn-success float-right"><i class="fas fa-cart-plus"></i> List Categories</a>
+                </div>
+            </div>
+        
+    </div>
+</section>

@@ -1,0 +1,17 @@
+<table class="table" ng-if="db">
+  <thead>
+    <tr>
+      <th></th>
+      <th ng-repeat="role in db.roles">{{role.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="acc in db.accounts">
+      <th>{{acc.username}}</th>
+	  <th ng-repeat="role in db.roles">
+	  	<input type="checkbox" ng-checked="index(acc.username, role.id) >= 0"
+	  	ng-click="update(acc.username, role.id)">
+	  </th>
+    </tr>
+  </tbody>
+</table>

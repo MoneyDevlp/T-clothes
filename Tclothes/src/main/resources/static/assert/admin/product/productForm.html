@@ -1,0 +1,83 @@
+<section class="row">
+            <div class="col offset">
+                <div class="card">
+                    <div class="card-header">
+                        <h2> <i class="fas fa-cart-plus"></i> Add New Product</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="form-group">
+                                    <label for="productId">Product ID:</label>
+                                    <input ng-model="form.productId" placeholder="Product Id?" class="form-control"/>
+                                    <!-- <small style="color: red"><form:errors path="productId"></form:errors></small> -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input ng-model="form.name" placeholder="Name?" class="form-control"/>
+                                	<small style="color: red" ng-bind="error.name"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantity:</label>
+                                    <input ng-model="form.quantity" placeholder="Quantity?" class="form-control"/>
+                                	<small style="color: red" ng-bind="error.quantity"></small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="categoryId">Category:</label>
+                                    <select ng-model="form.category.categoryId" class="form-control">
+                                    	<option ng-repeat="c in cates" ng-value="c.categoryId">{{c.name}}</option>
+                                    </select>
+                                    <small style="color: red" ng-bind="error.category"></small>
+                                </div>
+                                
+                            </div>
+                            <div class="col-4">
+                                <img ng-src="{{'/assert/images/' + form.image}}" alt="" width="30%"
+                                class="img-fluid">
+                                <div class="form-group">
+                                    <label for="image">Image File</label>
+                                    <input  type="file" id="image" 
+                                    onchange="angular.element(this).scope().imageChange(this.files)"/>
+                                    <small style="color: red" ng-bind="error.image"></small>
+                                </div>
+                                <div class="input-group form-group">
+                                    <span class="input-group-text">Unit Price:</span>
+                                    <input ng-model="form.unitPrice" placeholder="UnitPrice?" class="form-control"/>
+                                	<!-- <small style="color: red"><form:errors path="unitPrice"></form:errors></small> -->
+                                    <span class="input-group-text">$</span>
+                                    <small style="color: red" ng-bind="error.unitPrice"></small>
+                                </div>
+                                <div class="input-group form-group">
+                                    <span class="input-group-text">Discount:</span>
+                                    <input ng-model="form.discount" placeholder="Discount?"class="form-control"/>
+                                	<!-- <small style="color: red"><form:errors path="discount"></form:errors></small> -->
+                                    <span class="input-group-text">%</span>
+                                    <small style="color: red" ng-bind="error.discount"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="enteredDate">EnteredDate:</label>
+                                    <input type="date" ng-model="form.enteredDate" placeholder="EnteredDate?" class="form-control"/>
+                                	<small style="color: red" ng-bind="error.enteredDate"></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea ng-model="form.description" rows="2" cols="10" placeholder="Description?" class="form-control"></textarea>
+                                	<small style="color: red" ng-bind="error.description"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button ng-click="create()" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                        <button class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
+                        <button type="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Reset</button>
+                        <a href="#!listProduct" class="btn btn-danger float-right"><i class="fas fa-cart-plus"></i> List Product</a>
+                    </div>
+                </div>
+            </div>
+        </section>

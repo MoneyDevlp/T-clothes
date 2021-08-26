@@ -1,0 +1,67 @@
+<section class="row">
+            <div class="col offset">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-user-plus"></i> Add New Account</h2>
+                        </div>
+                        <div class="card-body">
+                        <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input ng-model="form.username" placeholder="Username?" class="form-control"/>
+                             	<small style="color: red" ng-bind="error.username"></small> 
+                            </div>
+                            <div class="form-group">
+                                <label for="fullname">Fullname:</label>
+                                <input ng-model="form.fullname" placeholder="Fullname?" class="form-control"/>
+                                <small style="color: red" ng-bind="error.fullname"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input ng-model="form.password" type="password" placeholder="Password?" class="form-control"/>
+                                <small style="color: red" ng-bind="error.password"></small>
+                            </div>
+                            </div>
+                            <div class="col-6">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input ng-model="form.email" placeholder="Email?" class="form-control"/>
+                                <small style="color: red" ng-bind="error.email"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone:</label>
+                                <input ng-model="form.phone" placeholder="Phone?" class="form-control"/>
+                                <small style="color: red" ng-bind="error.phone"></small>
+                            </div>
+                            <div class="form-group">
+                                <fieldset class="form-group row">
+								    &nbsp;&nbsp;&nbsp;<label for="role">Gender:</label>
+								    <div class="col-sm-10">
+								      <div class="form-check form-check-inline">
+								        <input class="form-check-input" type="radio" ng-model="form.gender" name="gridRadios" id="gridRadios1" ng-value="true" checked>
+								        <label class="form-check-label" for="gridRadios1">
+								          Male
+								        </label>
+								      </div>
+								      <div class="form-check form-check-inline">
+								        <input class="form-check-input" type="radio" ng-model="form.gender" name="gridRadios" id="gridRadios2" ng-value="false">
+								        <label class="form-check-label" for="gridRadios2">
+								          	Female
+								        </label>
+								         &nbsp;&nbsp;<small style="color: red" ng-bind="error.gender"></small>
+								      </div>
+								    </div>
+								  </fieldset>   
+                            </div> 
+                            </div>  
+                        </div>
+                        </div>
+                        <div class="card-footer text-muted">
+                             <button ng-click="create()" class="btn btn-primary"><i class="fas fa-save"></i>Save</button> &nbsp;
+                    		 <button type="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> Reset</button> &nbsp;
+                    		 <a href="#!listAccount" class="btn btn-success float-right"><i class="fas fa-cart-plus"></i> List Account</a>
+                        </div>
+                    </div>
+            </div>
+        </section>

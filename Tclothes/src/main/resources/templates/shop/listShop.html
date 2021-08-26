@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org"
+	th:replace="~{/layout/index :: dynamic(~{::body})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section class="breadcrumb-section set-bg" data-setbg="/img/shop.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Clothes Shop</h2>
+						<div class="breadcrumb__option">
+							<a th:href="@{/user}">Home</a> <span>Shop</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+
+	<!-- Product Section Begin -->
+	<section class="product spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-5">
+					<div class="sidebar">
+						<div class="sidebar__item">
+							<h4>Category</h4>
+							<ul>
+								<li th:each="c:${cates}"><a class="ca"
+									th:href="@{|/shop?cid=${c.categoryId}|}">[[${c.name}]]</a></li>
+							</ul>
+						</div>
+						<div class="sidebar__item">
+							<h4>Price</h4>
+							<form th:action="@{/seachPrice}">
+								<input name="min" class="form-control fsp"
+									placeholder="Min price..." style="width: 50%"> <br>
+								<input name="max" class="form-control fsp"
+									placeholder="Max price..." style="width: 50%"> <br>
+								<button class="btn btn-danger">Search</button>
+							</form>
+						</div>
+						<div class="sidebar__item sidebar__item__color--option">
+							<h4>Colors</h4>
+							<div class="sidebar__item__color sidebar__item__color--white">
+								<label for="white"> White <input type="radio" id="white">
+								</label>
+							</div>
+							<div class="sidebar__item__color sidebar__item__color--gray">
+								<label for="gray"> Gray <input type="radio" id="gray">
+								</label>
+							</div>
+							<div class="sidebar__item__color sidebar__item__color--red">
+								<label for="red"> Red <input type="radio" id="red">
+								</label>
+							</div>
+							<div class="sidebar__item__color sidebar__item__color--black">
+								<label for="black"> Black <input type="radio" id="black">
+								</label>
+							</div>
+							<div class="sidebar__item__color sidebar__item__color--blue">
+								<label for="blue"> Blue <input type="radio" id="blue">
+								</label>
+							</div>
+							<div class="sidebar__item__color sidebar__item__color--green">
+								<label for="green"> Green <input type="radio" id="green">
+								</label>
+							</div>
+						</div>
+						<div class="sidebar__item">
+							<h4>Popular Size</h4>
+							<div class="sidebar__item__size">
+								<label class="si" for="large"> Large <input type="radio"
+									id="large">
+								</label>
+							</div>
+							<div class="sidebar__item__size">
+								<label class="si" for="medium"> Medium <input
+									type="radio" id="medium">
+								</label>
+							</div>
+							<div class="sidebar__item__size">
+								<label class="si" for="small"> Small <input type="radio"
+									id="small">
+								</label>
+							</div>
+							<div class="sidebar__item__size">
+								<label class="si" for="tiny"> Tiny <input type="radio"
+									id="tiny">
+								</label>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-lg-9 col-md-7">
+
+					<div class="filter__item">
+						<div class="row">
+							<div class="col-lg-3 col-md-5">
+								<div class="filter__sort">
+									<span>Sort By Price</span>
+									 <!-- <select>
+										<option value="0">Default</option>
+										<option value="0">A - Z</option>
+										<option value="0">Z - A</option>
+										<option value="0">MIN - MAX</option>
+										<option value="0"><a></a></option>
+									</select> -->
+									&nbsp;<a th:href="@{/shopasc}" class="sot"><i class="fas fa-sort-alpha-down"></i></a>
+									&nbsp;&nbsp;<a th:href="@{/shopdesc}" class="sot"><i class="fas fa-sort-alpha-up"></i></a>
+								</div>
+							</div>
+							<div class="col-lg-5 col-md-4">
+								<div class="filter__found">
+									<h6>
+										<span>9</span> Products found
+									</h6>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-3" style="margin-top: -10px;">
+								<!-- <form th:action="@{/search}">
+									<div class="form-inline" style="float: right;">
+										<label for="name">Name:</label>
+										<input type="text" class="form-control" name="name"
+											style="width: 50%"> &nbsp;
+										<button class="btn btn-danger"><i class="fas fa-search"></i></button>
+									</div>
+								</form> -->
+								<form th:action="@{/search}">
+						          <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+						            <div class="input-group">
+						              <input type="search" name="name" placeholder="Nhập từ bạn cần tìm?" class="form-control border-0 bg-light fs">
+						              <div class="input-group-append">
+						                <button id="button-addon1" class="btn btn-link text-primary bs"><i class="fa fa-search" style="color: brown;"></i></button>
+						              </div>
+						            </div>
+						          </div>
+						        </form>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-6 col-sm-6"
+							th:each="item:${items.content}">
+							<div class="product__item">
+								<div class="product__item__pic set-bg" data-setbg="">
+									<img th:src="@{|/assert/images/${item.image}|}">
+									<ul class="product__item__pic__hover">
+										<li><a href="#"><i class="fa fa-heart"></i></a></li>
+										<li><a th:href="@{|/shop/detail/${item.productId}|}"><i
+												class="fa fa-retweet"></i></a></li>
+										<li><a
+											th:attr="ng-click=@{|cart.add(${item.productId})|}"><i
+												class="fa fa-shopping-cart"></i></a></li>
+									</ul>
+								</div>
+								<div class="product__item__text">
+									<h6>
+										<a href="#" th:text="${item.name}"></a>
+									</h6>
+									<h5 style="color: brown;" th:text="${item.unitPrice}"></h5>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<nav aria-label="Page navigation example "
+								th:if="${items.totalPages > 0}">
+								<ul class="pagination justify-content-center">
+									<li
+										th:class="${ 1== items.number + 1} ? 'page-item active' : 'page-item'">
+										<a
+										th:href="@{/shop(name=${name}, size=${items.size}, page=${1})}"
+										class="page-link">First</a>
+									</li>
+									<li class="page-item active"
+										th:each="pageNumber : ${pageNumbers}"
+										th:if="${items.totalPages > 1}"
+										th:class="${pageNumber == items.number + 1} ? 'page-item active' : 'page-item'">
+										<a
+										th:href="@{/shop(name=${name}, size=${items.size}, page=${pageNumber})}"
+										class="page-link" th:text="${pageNumber}"></a>
+									</li>
+
+									<li
+										th:class="${ items.totalPages == items.number + 1} ? 'page-item active' : 'page-item'">
+										<a
+										th:href="@{/shop(name=${name}, size=${items.size}, page=${items.totalPages})}"
+										class="page-link">Last</a>
+									</li>
+								</ul>
+							</nav>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

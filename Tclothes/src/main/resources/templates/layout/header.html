@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="header" th:fragment="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> tien@gmail.com</li>
+                                <li>Free Shipping for all Order of $99</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <div>English</div>
+                                <ul>
+                                    <li><a class="n" href="#">Spanis</a></li>
+                                    <li><a class="n" href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth" th:unless="${#request.remoteUser}">
+                                <a th:href="@{/auth/login/form}"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                            <div class="header__top__right__language" th:if="${#request.remoteUser}">
+                                <div>Account</div>
+                                <ul>
+                                    <li><a class="n" th:href="@{/auth/logoff}">Logout</a></li>
+                                    <li><a class="n" th:href="@{/auth/logoff}">Profile</a></li>
+                                    <li><a class="n" th:href="@{/auth/logoff}">ChangePass</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a th:href="@{/admin}" th:if="${#request.isUserInRole('ADMIN') or #request.isUserInRole('STAFF')}"><i class="fa fa-user"></i> Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container"> 
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a th:href="@{/user}"><img src="/img/tclothes.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a th:href="@{/user}">Home</a></li>
+                            <li><a href="#">Shop</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a th:href="@{/shop}">List Product</a></li>
+                                    <li><a th:href="@{/cart}">Shoping Cart</a></li>
+                                    <li><a th:if="${#request.remoteUser}" th:href="@{/order/list}">Your Order</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Pages</a></li>
+                            <li><a th:href="@{/blog}">Blog</a></li>
+                            <li><a th:href="@{/contact}">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a ><i class="fa fa-heart"></i> <span>1</span></a></li> &nbsp;
+                            <li><a th:href="@{/cart}"><i class="fa fa-shopping-bag"></i> <span>{{cart.count}}</span></a></li>
+                        </ul>
+                        <div class="header__cart__price">item: <span>{{cart.amount| number : 2}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
